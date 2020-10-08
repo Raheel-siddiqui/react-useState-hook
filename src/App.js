@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Person from './Person';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = props => {
+const [personState , setpersonState] = useState({
+  person: [
+    {name:"raheel siddiqui" , Age:25},
+    {name:"tabish khan" , Age:24},
+    {name:"saad khan" , Age:23}
+  ]
+});
+
+const changeHandler = () =>{
+
+  setpersonState({
+    person: [
+      {name:"Umer Siddiqui" , Age:25},
+      {name:"Talha khan" , Age:24},
+      {name:"Ali khan" , Age:23}
+    ]
+  });
+
+};
+
+return(
+
+  <div className="App">
+
+    <button onClick={changeHandler}>Switch Name</button>
+
+{personState.person.map((person, index) => <Person key={`${index}`} name={person.name}  age ={person.age}/>) }
+
+  </div>
+
+)
 }
-
 export default App;
+
